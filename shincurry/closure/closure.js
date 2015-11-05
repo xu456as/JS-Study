@@ -1,9 +1,3 @@
-// node -v
-// v5.0.0
-
-
-
-
 // 全局变量和局部变量
 
 var a = 10; // 全局
@@ -18,8 +12,9 @@ f1();
 
 console.log("a = " + a);
 console.log("c = " + c);
-// 这里 c 应该是全局变量，应该可行的
 
+
+// --------------
 // 闭包与变量作用域
 
 function f2() {
@@ -30,7 +25,7 @@ function f2() {
 }
 f2();
 
-console.log("--------------");
+// --------------
 // 闭包就是能够读取其他函数内部变量的函数
 
 // 基本形式，嵌套
@@ -60,7 +55,7 @@ currentPerson.addMoney(3);
 console.log(currentPerson.moneyNK);
 
 
-console.log("--------------");
+// --------------
 
 function count() {
 	var counter = 0;
@@ -83,3 +78,31 @@ ccc();
 
 
 
+// --------------
+// 回调函数
+function load() {
+	setTimeout(function () {
+		loaded("work done.");
+		}, 5000);
+}
+
+function loaded(str) {
+	console.log(str);
+}
+
+load();
+
+// 两种方法不同点
+// 下一个 setTimeout 参数出错，传入的参数是一个函数的运行结果
+
+function load_new() {
+	setTimeout(loaded_new("work done."), 6000);
+}
+
+function loaded_new(str) {
+	console.log(str + "new");
+}
+
+load_new();
+
+// --------------
