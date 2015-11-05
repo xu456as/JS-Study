@@ -1,4 +1,4 @@
-
+console.log('------------');
 var a = function(){
 var c = 1; 
 return {
@@ -11,8 +11,10 @@ var pp = a();
 
 pp.d();
 pp.o();
+console.log('hello world');
 
-delete pp.d
-delete pp.o
+ww();
 
-pp.d();
+function ww(){
+ console.log('---');
+};
