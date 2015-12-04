@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type = "text/javascript" charset="utf-8">
+        var arr = []; //数组构造用中括号
+        var arr2;
+        var length;
+        var object;
+        length = arr.push(1,3,'our',5,'we'); //往后添加元素并返回数组长度
+        object = arr.pop(); //数组去除最后一个元素并返回该元素
+        length = arr.unshift(100,200); //往数组头部添加元素并返回数组长度，与push对应
+        object = arr.shift(); //去除数组第一个元素并返回该元素，与pop对应
+        console.log(arr); //arr : [200, 1, 3, "our", 5]
+
+        arr.splice(1,2,'we','you','it'); // 从下标1开始的2个位置被删除，并在此处插入元素
+        console.log(arr); // arr ： [200, "we", "you", "it", "our", 5]
+
+        arr2 = arr.slice(1,2);//输入头和尾下标，返回前闭后开区间的数组，原数组不变化
+        console.log(arr2); // arr2 :  ["we"]
+
+        arr = [1,4,5,8,2,7,3,9];
+        arr2 = arr.sort(); //排序并返回排序后数组
+        console.log(arr);
+        console.log(arr2);
+
+        arr.reverse(); //倒序
+        console.log(arr);
+
+        arr = ['6',4,6,7,8,5,4,6,7];
+        console.log(arr.indexOf(6)); //查找元素6的下标,用===查找
+        console.log(arr.indexOf(6,5));//从5下标开始，查找元素6的下标
+
+        arr = [4,2,5,6];
+        console.log(arr.every(function(item,index,array){
+           return item!=11;
+        })); //传入函数，参数1为元素，2为下表，3为该数组，如果所有返回结果为真，结果才是真
+
+        arr = [4,2,5,6];
+        console.log(arr.some(function(item,index,array){
+            return item==2;
+        })); //与every相对应
+
+        arr = [4,2,5,6];
+        console.log(arr.filter(function(item,index,array){
+            return item==2||index==3;
+        }));//传入函数，满足条件者依旧留在数组，其他被抛弃
+
+        arr = [4,2,5,6];
+        arr.forEach(function(item,index,array){
+           // alert(item);
+            item=11;
+           // alert(item);
+        });//遍历所有元素对其操作，发现只能读不能写，元素未发生改变,且无返回值
+        console.log(arr);
+
+        arr2 = arr.map(function(item,index,array){
+            return item=0;
+        }); //对数组所有元素作出变化并返回变化后数组，原数组未发生变化
+        console.log(arr);
+        console.log(arr2);
+
+        arr = [1,2,3,4,5];
+        arr2  = arr.reduce(function(prev,cur,index,array){
+            alert(prev);
+            return cur + prev;
+        });//prev ： 前一个元素 cur当前元素，
+        // 用prev和cur处理成prev且变成当前元素，删除钱一个元素
+        console.log(arr);
+        console.log(arr2);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
