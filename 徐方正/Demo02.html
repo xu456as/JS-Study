@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type = 'text/javascript' charset = utf-8>
+        //对象构造的两种形式：
+        var obj = new Object();
+        var student = {};
+
+        //添加属性的两种形式：
+        student.name = 'zhangsan';
+        student['age'] = 15;
+
+        //添加方法的方式：
+        student.behavior = function(){
+            console.log("my name is "+student.name);
+        }
+        student.behavior(); //输出"my name is "+student.name
+
+        //删除属性或方法用delete运算符
+        //delete student.behavior();错误： 删除方法时无需调用方法
+        delete student.behavior;//方法已经被删除
+        console.log('type of behavior is ' + typeof student.behavior);//undefined
+
+        //对象成员的遍历用 forin
+        for(var attribute in student){
+            console.log('attribute is ' + attribute);
+        }
+
+        //检测对象有无该属性
+        student.hasOwnProperty('name');//true
+
+        //创建一个Map的构造函数
+        function Map(){
+            //成员属性
+            var data = {};
+
+            //各种成员方法
+            this.put = function (key,value){
+                data[key.toString()] = value;
+            }
+            this.size = function(){
+                var cnt = 0;
+                for(var attribute in data){
+                    cnt = cnt+1;
+                }
+                return cnt;
+            }
+            this.get = function(key){
+                if(data.hasOwnProperty(key.toString())){
+                    return data[key.toString()];
+                }
+                else {
+                    return null;
+                }
+            }
+            this.remove = function(key){
+                if(data.hasOwnProperty(key.toString())){
+                    //这种情况下没有发现点运算访问属性版本的delete操作
+                    //delete data.key;无效
+                    delete data[key.toString()];
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            return this;//可加可不加
+        }
+
+        var map = new Map();
+        map.put('a',100);
+        map.put('b',200);
+        console.log(map.size());//2
+        map.remove('a');
+        console.log(map.get('a'));//undefined
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
