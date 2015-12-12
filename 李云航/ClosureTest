@@ -1,0 +1,15 @@
+function ClosureTest() {
+	var name = "Mrcode";
+	var age  = 19;
+	return {
+		getName : function() {
+			return name;
+		},
+		getAge : function(){
+			return age;
+		}
+	}
+}
+
+var tmp = ClosureTest();
+alert("姓名:" + tmp.getName() + "\n年龄" + tmp.getAge());
